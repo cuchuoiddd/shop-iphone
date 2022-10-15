@@ -1,0 +1,221 @@
+.fa-15x {
+    font-size: 1.5em !important;
+}
+.pointer {
+    cursor: pointer;
+}
+.required:after {
+    content: " *";
+    color: red;
+}
+/*pagination----------------------------------*/
+.custom-pagination .pagination .page-link {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 25px;
+    padding: 0.4em 1em;
+    margin: 0 3px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+/*.custom-pagination .page-link {*/
+    /*position: relative;*/
+    /*display: block;*/
+    /*padding: 0.5rem 0.75rem;*/
+    /*margin-left: -1px;*/
+    /*line-height: 1.25;*/
+    /*color: #1e9ad6;*/
+    /*background-color: #fff;*/
+    /*border: 1px solid #ddd;*/
+/*}*/
+
+
+
+
+
+
+/*search---------------------------------------*/
+.search-custom{
+    top: 20px;
+    padding: 7px 5px;
+    position: absolute;
+    right: 20px;
+}
+.form-control-custom{
+    display: inline;
+    width: auto;
+}
+
+
+/*Loading-----------------------------------------*/
+.loading-custom{
+    background-color: rgb(193 190 190 / 40%);;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    z-index: 1060;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+.loading-custom .loader {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin-left: 10%;
+    transform: translate3d(-50%, -50%, 0);
+}
+.loading-custom .dot {
+    width: 24px;
+    height: 24px;
+    background: #3ac;
+    border-radius: 100%;
+    display: inline-block;
+    animation: slide 1s infinite;
+}
+.loading-custom .dot:nth-child(1) {
+    animation-delay: 0.1s;
+    background: #32aacc;
+}
+.loading-custom .dot:nth-child(2) {
+    animation-delay: 0.2s;
+    background: #64aacc;
+}
+.loading-custom .dot:nth-child(3) {
+    animation-delay: 0.3s;
+    background: #96aacc;
+}
+.loading-custom .dot:nth-child(4) {
+    animation-delay: 0.4s;
+    background: #c8aacc;
+}
+.loading-custom .dot:nth-child(5) {
+    animation-delay: 0.5s;
+    background: #faaacc;
+}
+@-moz-keyframes slide {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@-webkit-keyframes slide {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@-o-keyframes slide {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes slide {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*-----------------------------------------*/
+#myModal .select2{
+    width: 100% !important;
+}
+
+.modal-custom{
+    max-width: 100%;
+    width: 100%;
+}
+.modal-custom1{
+    max-width: 100%;
+    width: 90%;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.img-thumb{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+
+}
+
+.tooltip {
+    z-index: 100000000;
+}
+
+.mof-container-focus {
+    position: relative;
+    height: 75px;
+    width: 100%;
+    float: left;
+    background-color: white;
+}
+
+.textarea-resize-focus {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow-y: hidden;
+    transition: ease 0.2s all;
+    line-height: 20px;
+    font-size: 11px;
+}
+.textarea-resize-focus:focus {
+    height: 100px;
+    width: 400px !important;
+    z-index: 9999;
+    box-shadow: 0 0 10px #ddd;
+}
+.textarea-resize-focus-custom {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    overflow-y: hidden;
+    transition: ease 0.2s all;
+    line-height: 20px;
+    font-size: 11px;
+}
+.textarea-resize-focus-custom:focus {
+    height: 100px;
+    width: 400px !important;
+    z-index: 9999;
+    box-shadow: 0 0 10px #ddd;
+}
+
+.custom-box{
+    overflow: auto;
+    height: 590px;
+}
