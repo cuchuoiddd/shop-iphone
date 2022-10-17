@@ -37,6 +37,16 @@
                     <i class="fa fa-table"></i> <span>Quản lý Banner</span>
                 </a>
             </li>
+            <li class="{{ $url == route('admin.capacities.index') ? 'active' : '' }}">
+                <a href="{{route('admin.capacities.index')}}">
+                    <i class="fa fa-table"></i> <span>Quản lý Dung lượng</span>
+                </a>
+            </li>
+            <li class="{{ $url == route('admin.colors.index') ? 'active' : '' }}">
+                <a href="{{route('admin.colors.index')}}">
+                    <i class="fa fa-table"></i> <span>Quản lý Màu sắc</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

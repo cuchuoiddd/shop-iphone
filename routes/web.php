@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
         $message = 'ngon ngay';
         $type = 'alert-danger';
 //   return view('test',compact('message','type'));
-        return view('test')->with(['type' => 'alert-danger', 'message' => 'ngon ngay']);
+        return view('test')->with(['type' => 'alert-success', 'message' => 'Thêm mới thành công']);
     });
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('dashboard', 'HomeController@index')->name('dashboard');
@@ -31,7 +31,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('settings', 'SettingController');
         Route::resource('categories', 'CategoryController');
         Route::resource('products', 'ProductController');
+        Route::put('update-status-product', 'ProductController@updateStatus');
+        Route::get('get-info-product/{product_id}', 'ProductController@getInfoProduct');
+
         Route::resource('banners', 'BannerController');
+        Route::resource('capacities', 'CapacityController');
+        Route::resource('colors', 'ColorController');
     });
     Route::group(['namespace' => 'Settings', 'prefix' => 'settings', 'as' => 'settings.'], function () {
         Route::resource('company', 'CompanyController');

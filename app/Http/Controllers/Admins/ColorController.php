@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
+use App\Models\Color;
+use App\Models\ProductOption;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('position')->get();
-        return view('admin.category.index',compact('categories'));
+        $colors = Color::all();
+        return view('admin.color.index',compact('colors'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
+        Color::create($request->all());
         return back()->with(['type' => 'alert-success', 'message' => 'Thêm mới thành công']);
     }
 
@@ -73,7 +73,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cate = Category::find($id)->update($request->all());
+        Color::find($id)->update($request->all());
         return back()->with(['type' => 'alert-success', 'message' => 'Cập nhật thành công']);
     }
 
@@ -85,20 +85,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $product = Product::where('category_id',$id)->first();
-        $child = Category::where('parent_id',$id)->first();
+        $color = Color::find($id);
+        $product = ProductOption::where('color_id',$id)->first();
         if($product){
             $data['success'] = false;
-            $data['message'] = 'Tồn tại sản phẩm k được xóa !';
+            $data['message'] = 'Đã được sử dụng k được xóa !';
             return $data;
         }
-        if ($child){
-            $data['success'] = false;
-            $data['message'] = 'Tồn tại danh mục con k được xóa !';
-            return $data;
-        }
-        $category->delete();
+        $color->delete();
         return 1;
     }
 }

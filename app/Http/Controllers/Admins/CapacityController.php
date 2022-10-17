@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Capacity;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CapacityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('position')->get();
-        return view('admin.category.index',compact('categories'));
+        $capacities = Capacity::all();
+        return view('admin.capacity.index', compact('capacities'));
     }
 
     /**
@@ -33,19 +33,19 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
+        Capacity::create($request->all());
         return back()->with(['type' => 'alert-success', 'message' => 'Thêm mới thành công']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -56,7 +56,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -67,38 +67,31 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $cate = Category::find($id)->update($request->all());
-        return back()->with(['type' => 'alert-success', 'message' => 'Cập nhật thành công']);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $product = Product::where('category_id',$id)->first();
-        $child = Category::where('parent_id',$id)->first();
+        $capa = Capacity::find($id);
+        $product = Product::where('capacity_id',$id)->first();
         if($product){
             $data['success'] = false;
-            $data['message'] = 'Tồn tại sản phẩm k được xóa !';
+            $data['message'] = 'Đã sử dụng k được xóa !';
             return $data;
         }
-        if ($child){
-            $data['success'] = false;
-            $data['message'] = 'Tồn tại danh mục con k được xóa !';
-            return $data;
-        }
-        $category->delete();
+        $capa->delete();
         return 1;
     }
 }

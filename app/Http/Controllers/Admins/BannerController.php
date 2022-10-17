@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Helpers\Functions;
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BannerController extends Controller
 {
@@ -14,7 +17,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        $banners = Banner::all();
+        return view('admin.banner.index',compact('banners'));
     }
 
     /**
@@ -35,7 +39,18 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array('file' => 'max:10000|mimes:jpg,jpeg,png,JPG,JPEG,PNG');
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $data = $request->except('file');
+
+        $destinationPath = '/images/banner/';
+        $data['image'] = Functions::uploadImage($request->file,$destinationPath);
+        Banner::create($data);
+        return back()->with(['type' => 'alert-success', 'message' => 'Thêm mới thành công']);
     }
 
     /**
@@ -80,6 +95,9 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $banner = Banner::find($id);
+        Functions::unlinkUpload($banner->image);
+        $banner->delete();
+        return 1;
     }
 }

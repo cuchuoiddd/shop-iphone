@@ -18,8 +18,7 @@ class CreateProductOptionsTable extends Migration
             $table->integer('product_id');
             $table->integer('new_price')->default(0)->nullable();
             $table->integer('old_price')->default(0)->nullable();
-            $table->string('color_name');
-            $table->string('color');
+            $table->integer('color_id');
             $table->timestamps();
         });
     }

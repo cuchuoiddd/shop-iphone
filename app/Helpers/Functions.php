@@ -68,7 +68,7 @@ class Functions
         $filename = $file->getClientOriginalName();
         $picture = Str::slug(substr($filename, 0, strrpos($filename, "."))) . '_' . time() . '.' . $extension;
         $image = $file->move(public_path($path), $picture);
-        return $image->getFileInfo()->getFilename();
+        return $path.$image->getFileInfo()->getFilename();
     }
 
     public static function unlinkUpload($path)

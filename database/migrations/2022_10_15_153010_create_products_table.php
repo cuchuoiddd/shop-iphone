@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('category_id');
-            $table->string('capacity')->comment('dung lượng');
+            $table->integer('capacity_id')->comment('dung lượng');
             $table->tinyInteger('sim_free')->default(0)->nullable();
             $table->string('thumbnail');
             $table->tinyInteger('status')->default(1)->comment('trạng thái')->nullable();

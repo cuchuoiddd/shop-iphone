@@ -37,6 +37,24 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = array('file' => 'max:10000|mimes:jpg,jpeg,png,JPG,JPEG,PNG');
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $data = $request->except('file');
+
+        if ($request->file) {
+
+            $extension = $request->file->getClientOriginalExtension();
+            $filename = $request->file->getClientOriginalName();
+            $destinationPath = '/images/product/';
+            $picture = Str::slug(substr($filename, 0, strrpos($filename, "."))) . '_' . time() . '.' . $extension;
+            $image = $request->file->move(public_path($destinationPath), $picture);
+            $data['thumbnail'] = $destinationPath.$image->getFileInfo()->getFilename();
+        }
+
         Setting::create($request->all());
         return back();
     }
@@ -72,6 +90,25 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = array('file' => 'max:10000|mimes:jpg,jpeg,png,JPG,JPEG,PNG');
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $data = $request->except('file');
+
+        if ($request->file) {
+
+            $extension = $request->file->getClientOriginalExtension();
+            $filename = $request->file->getClientOriginalName();
+            $destinationPath = '/images/product/';
+            $picture = Str::slug(substr($filename, 0, strrpos($filename, "."))) . '_' . time() . '.' . $extension;
+            $image = $request->file->move(public_path($destinationPath), $picture);
+            $data['thumbnail'] = $destinationPath.$image->getFileInfo()->getFilename();
+        }
+
+
         $setting = Setting::find($id);
         $setting->update($request->all());
         return back()->with(['type' => 'alert-success', 'message' => 'Cập nhật thành công !']);
