@@ -37,7 +37,7 @@
                             <!-- /.form-group -->
 
                             <div class="form-group">
-                                <label class="required">Vị trí hiển thị</label>
+                                <label class="">Vị trí hiển thị</label>
                                 <div class="controls">
                                     <input type="number" name="position" class="form-control position">
                                 </div>

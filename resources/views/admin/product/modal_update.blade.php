@@ -19,7 +19,7 @@
                         <label class="col-sm-2 col-form-label">Chọn danh mục:</label>
                         <div class="col-sm-4 controls">
                             <select name="category_id" id="category_id" data-placeholder="Chọn danh mục"
-                                    class="select2 form-control">
+                                    class="select2 form-control category_id">
                                 <option value=""></option>
                                 @forelse($categories as $item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
@@ -35,7 +35,7 @@
                         </div>
                         <label class="col-sm-2 col-form-label">Dung lượng:</label>
                         <div class="col-sm-4 controls">
-                            <select name="capacity_id" id="" class="form-control select2">
+                            <select name="capacity_id" id="" class="form-control select2 capacity_id">
                                 @forelse($capacities as $item)
                                     <option value="{{$item->id}}">{{$item->capacity}}</option>
                                 @empty
@@ -63,9 +63,9 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10 controls">
-                            <input type="checkbox" id="md_checkbox" name="sim_free" value="1"
+                            <input type="checkbox" id="md_checkbox1" name="sim_free" value="1"
                                    class="filled-in chk-col-blue sim_free">
-                            <label for="md_checkbox">Sim Free</label>
+                            <label for="md_checkbox1">Sim Free</label>
 
                         </div>
                     </div>

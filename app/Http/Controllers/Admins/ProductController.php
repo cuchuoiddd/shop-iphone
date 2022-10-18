@@ -104,7 +104,33 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $rules = array('file' => 'max:10000|mimes:jpg,jpeg,png,JPG,JPEG,PNG');
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $data = $request->except('file','color_id','new_price','old_price');
+
+        if ($request->file) {
+            $destinationPath = '/images/product/';
+            $data['thumbnail'] = Functions::uploadImage($request->file,$destinationPath);
+            Functions::unlinkUpload($product->thumbnail);
+        }
+        ProductOption::where('product_id',$id)->delete();
+        $product->update($data);
+
+        if(count($request->color_id)){
+            foreach ($request->color_id as $key=>$item){
+                $data_option['color_id'] = $item;
+                $data_option['new_price'] = str_replace(',', '', $request->new_price[$key]);
+                $data_option['old_price'] = str_replace(',', '', $request->old_price[$key]);
+                $data_option['product_id'] = $product->id;
+                ProductOption::create($data_option);
+            }
+        }
+        return back()->with(['type' => 'alert-success', 'message' => 'Cập nhật thành công']);
     }
 
     /**

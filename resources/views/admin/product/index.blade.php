@@ -76,19 +76,8 @@
             let html = '';
 
             let data_html = '';
-            let data = $('.dataColor').val();
-            data = JSON.parse(data);
-            if (data.length > 0) {
-                data.forEach(f => {
-                    data_html += `
-                        <option value="` + f.id + `">` + f.color_name + `</option>
-                    `
-                })
-            }
-
-            // $('.rate').val(item.rate);
-            // $('.quantity').val(item.quantity);
-            // $('.position').val(item.position);
+            let data_color = $('.dataColor').val();
+            data_color = JSON.parse(data_color);
 
             form.attr('action', '/admin/products/' + id);
             $.ajax({
@@ -97,9 +86,24 @@
                     if(data){
                         console.log(123,data);
                         $('#FormEdit .name').val(data.name);
-                        // $('#FormEdit .name').val(data.name);
+                        $('#FormEdit .category_id').val(data.category_id).change();
+                        $('#FormEdit .capacity_id').val(data.capacity_id).change();
+                        let checked = data.sim_free == 1 ? 'checked' : '';
+                        $('#FormEdit .sim_free').prop('checked',checked);
+
+
                         if(data.product_option.length > 0){
                             data.product_option.forEach(f=>{
+
+                                if (data_color.length > 0) {
+                                    data_color.forEach(fe => {
+                                        let active = f.color_id == fe.id ? 'selected' : '';
+                                        data_html += `
+                                            <option  `+active+` value="` + fe.id + `">` + fe.color_name + `</option>
+                                        `
+                                    })
+                                }
+
                                 html += `
                                     <div class="box">
                                     <div class="box-body">
@@ -129,7 +133,8 @@
                                     </div>
                                 </div>
 
-                                `
+                                `;
+                                data_html = '';
                             })
 
                             console.log(12313,html);
@@ -143,17 +148,6 @@
                     }
                 }
             })
-
-            // $('.name').val(item.name);
-            // $('.rate').val(item.rate);
-            // $('.quantity').val(item.quantity);
-            // $('.position').val(item.position);
-            // if (item.sim_free == 1) {
-            //     $("#md_checkbox").prop("checked", true);
-            // }
-            // $('#category_id').val(item.category_id).change();
-            // $('.description').val(item.description);
-            // $('#myModal').modal({show: true});
         });
 
         $(document).on('click', '.btnStatus', function () {
