@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', 'HomeController@index');
     Route::get('test', function () {
         $message = 'ngon ngay';
         $type = 'alert-danger';
 //   return view('test',compact('message','type'));
         return view('test')->with(['type' => 'alert-success', 'message' => 'Thêm mới thành công']);
     });
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('dashboard', 'HomeController@index')->name('dashboard');
     Route::get('report', 'Report\ReportController@index')->name('report');
 
