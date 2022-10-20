@@ -16,7 +16,7 @@
 
         <!-- Main content -->
         <section class="content">
-            <form action="{{$settings ? '/admin/settings/'.$settings->id : '/admin/settings' }}" method="post">
+            <form action="{{$settings ? '/admin/settings/'.$settings->id : '/admin/settings' }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @if($settings)
                     @method('put')
@@ -41,6 +41,12 @@
                                 <label class="col-sm-2 col-form-label required">Address</label>
                                 <div class="col-sm-10 controls">
                                     <input class="form-control address" name="address" type="text" value="{{$settings ? $settings->address : ''}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label required">Logo</label>
+                                <div class="col-sm-10 controls">
+                                    <input type="file" name="file">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -85,7 +91,7 @@
                 </div>
                 <div class="box-footer flexbox">
                     <div class="text-right flex-grow">
-                        <button class="btn btn-sm btn-primary">Cập nhật</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Cập nhật</button>
                     </div>
                 </div>
             </div>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Helpers\Functions;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
@@ -40,22 +42,16 @@ class SettingController extends Controller
         $rules = array('file' => 'max:10000|mimes:jpg,jpeg,png,JPG,JPEG,PNG');
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->withErrors($validator)->with(['type' => 'alert-warning', 'message' => 'Ảnh quá 10mb']);;
         }
-
         $data = $request->except('file');
 
         if ($request->file) {
-
-            $extension = $request->file->getClientOriginalExtension();
-            $filename = $request->file->getClientOriginalName();
-            $destinationPath = '/images/product/';
-            $picture = Str::slug(substr($filename, 0, strrpos($filename, "."))) . '_' . time() . '.' . $extension;
-            $image = $request->file->move(public_path($destinationPath), $picture);
-            $data['thumbnail'] = $destinationPath.$image->getFileInfo()->getFilename();
+            $destinationPath = '/images/logo/';
+            $data['logo'] = Functions::uploadImage($request->file,$destinationPath);
         }
 
-        Setting::create($request->all());
+        Setting::create($data);
         return back();
     }
 
@@ -97,19 +93,14 @@ class SettingController extends Controller
         }
 
         $data = $request->except('file');
+        $setting = Setting::find($id);
 
         if ($request->file) {
-
-            $extension = $request->file->getClientOriginalExtension();
-            $filename = $request->file->getClientOriginalName();
-            $destinationPath = '/images/product/';
-            $picture = Str::slug(substr($filename, 0, strrpos($filename, "."))) . '_' . time() . '.' . $extension;
-            $image = $request->file->move(public_path($destinationPath), $picture);
-            $data['thumbnail'] = $destinationPath.$image->getFileInfo()->getFilename();
+            $destinationPath = '/images/logo/';
+            $data['logo'] = Functions::uploadImage($request->file,$destinationPath);
+            Functions::unlinkUpload($setting->logo);
         }
 
-
-        $setting = Setting::find($id);
         $setting->update($request->all());
         return back()->with(['type' => 'alert-success', 'message' => 'Cập nhật thành công !']);
     }
