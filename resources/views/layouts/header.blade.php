@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="/dashboard" class="logo">
+    <a href="/admin/settings" class="logo">
         <!-- mini logo -->
         <b class="logo-mini">
             <span class="light-logo"><img src="../images/logo-light.png" alt="logo"></span>
@@ -31,34 +31,34 @@
                 </li>
 
                 <!-- Okr -->
-                <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-plus"></i>
-                    </a>
-                    <ul class="dropdown-menu scale-up">
-                        <li class="header"><b>Thêm mới</b></li>
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li class="mt-2">
-                                    <a href="{{route('okrs.okr.index')}}">
-                                        <i class="fa fa-users text-aqua"></i> <b>OKRs</b>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('okrs.create-cfrs.index')}}">
-                                        <i class="fa fa-warning text-yellow"></i> <b>Phản hồi</b>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('okrs.create-cfrs.index')}}">
-                                        <i class="fa fa-users text-red"></i> <b>Ghi nhận</b>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                {{--<li class="dropdown notifications-menu">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+                        {{--<i class="fa fa-plus"></i>--}}
+                    {{--</a>--}}
+                    {{--<ul class="dropdown-menu scale-up">--}}
+                        {{--<li class="header"><b>Thêm mới</b></li>--}}
+                        {{--<li>--}}
+                            {{--<!-- inner menu: contains the actual data -->--}}
+                            {{--<ul class="menu">--}}
+                                {{--<li class="mt-2">--}}
+                                    {{--<a href="{{route('okrs.okr.index')}}">--}}
+                                        {{--<i class="fa fa-users text-aqua"></i> <b>OKRs</b>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="{{route('okrs.create-cfrs.index')}}">--}}
+                                        {{--<i class="fa fa-warning text-yellow"></i> <b>Phản hồi</b>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="{{route('okrs.create-cfrs.index')}}">--}}
+                                        {{--<i class="fa fa-users text-red"></i> <b>Ghi nhận</b>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
 
                 <!-- Messages -->
                 {{--<li class="dropdown messages-menu">--}}
@@ -334,15 +334,6 @@
                         <!-- Menu Body -->
                         <li class="user-body">
                             <div class="row no-gutters" style="min-width: 200px">
-                                <div class="col-12 text-left">
-                                    <a href="{{url('/profile')}}"><i class="ion ion-person"></i> Thông tin tài khoản</a>
-                                </div>
-                                {{--<div class="col-12 text-left">--}}
-                                {{--<a href="#"><i class="ion ion-email-unread"></i> Inbox</a>--}}
-                                {{--</div>--}}
-                                <div class="col-12 text-left">
-                                    <a href="{{url('/change-password')}}"><i class="ion ion-settings"></i> Đổi mật khẩu</a>
-                                </div>
                                 {{--<div role="separator" class="divider col-12"></div>--}}
                                 {{--<div class="col-12 text-left">--}}
                                 {{--<a href="#"><i class="ti-settings"></i> Account Setting</a>--}}

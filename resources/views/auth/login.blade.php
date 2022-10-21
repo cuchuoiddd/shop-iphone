@@ -102,7 +102,7 @@
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>OKRs</b> AdamGroup</a>
+        <a href="#"><b>Shop</b> Iphone</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

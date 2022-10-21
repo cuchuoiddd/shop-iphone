@@ -5,7 +5,7 @@
 <meta name="author" content="">
 <link rel="icon" href="{{asset('images/favicon.ico')}}">
 
-<title>OKRs AdamGroup</title>
+<title>Shop Iphone</title>
 
 <!-- Bootstrap 4.0-->
 <link rel="stylesheet" href="{{asset('assets/vendor_components/bootstrap/dist/css/bootstrap.css')}}">
