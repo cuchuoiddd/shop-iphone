@@ -73,7 +73,8 @@ class CapacityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Capacity::find($id)->update($request->all());
+        return back()->with(['type' => 'alert-success', 'message' => 'Cập nhật thành công']);
     }
 
     /**

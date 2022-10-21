@@ -83,7 +83,7 @@
     <meta name="author" content="">
     <link rel="icon" href="images/favicon.ico">
 
-    <title>OKRs Adam Group - Đăng nhập </title>
+    <title>ShopIphone - Đăng nhập </title>
 
     <!-- Bootstrap 4.0-->
     <link rel="stylesheet" href="assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">

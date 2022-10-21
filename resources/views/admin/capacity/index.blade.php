@@ -24,6 +24,7 @@
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>Dung lượng</th>
+                                        <th>Vị trí hiển thị</th>
                                         <th style="width: 100px">
                                             <span class="addCapacity  pointer"><i class="fa fa-plus"></i> THÊM</span>
                                         </th>
@@ -32,7 +33,9 @@
                                         <tr>
                                             <td>{{$key + 1}}.</td>
                                             <td>{{$item->capacity}}</td>
+                                            <td>{{$item->position}}</td>
                                             <td>
+                                                <span class="pointer edit" data-item="{{$item}}"><i class="fa fa-edit fa-15x" aria-hidden="true"></i></span>
                                                 <span class="pointer delete" data-id="{{$item->id}}"><i class="fa fa-trash-o fa-15x" aria-hidden="true"></i></span>
                                             </td>
                                         </tr>
@@ -64,7 +67,13 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label required">Dung lượng</label>
                                 <div class="col-sm-9 controls">
-                                    <input class="form-control" name="capacity" type="text" required data-validation-required-message="Dung lượng không được bỏ trống" placeholder="ví dụ: 500GB">
+                                    <input class="form-control capacity" name="capacity" type="text" required data-validation-required-message="Dung lượng không được bỏ trống" placeholder="ví dụ: 500GB">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label required">Position</label>
+                                <div class="col-sm-9 controls">
+                                    <input class="form-control position" name="position" type="number">
                                 </div>
                             </div>
                         </div>
@@ -83,8 +92,27 @@
 @section('script')
     <script>
         $('.addCapacity').on('click',function () {
+            resetValue();
             $('#myModal').modal('show');
         })
 
+        $(document).on('click', '.edit', async function () {
+            let item = $(this).data('item');
+            let form = $('#myForm');
+            form.attr('action', '/admin/capacities/' + item.id);
+            $('#myModal #myModalLabel').html('Cập nhật').change();
+            form.append('<input name="_method" type="hidden" value="PUT" class="_method" />');
+            $('.capacity').val(item.capacity);
+            $('.position').val(item.position);
+            $('#myModal').modal({show: true})
+        });
+
+        function resetValue() {
+            let form = $('#myForm');
+            form.attr('action', '/admin/capacities');
+            $('._method').remove();
+            $('#myModal #myModalLabel').html('Thêm mới dung lượng').change();
+            form.trigger('reset');
+        }
     </script>
 @endsection

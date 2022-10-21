@@ -84,7 +84,22 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array('file' => 'max:10000|mimes:jpg,jpeg,png,JPG,JPEG,PNG');
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $data = $request->except('file');
+        $banner = Banner::find($id);
+
+        if($request->file){
+            Functions::unlinkUpload($banner->image);
+            $destinationPath = '/images/banner/';
+            $data['image'] = Functions::uploadImage($request->file,$destinationPath);
+        }
+        $banner->update($data);
+        return back()->with(['type' => 'alert-success', 'message' => 'Thêm mới thành công']);
     }
 
     /**

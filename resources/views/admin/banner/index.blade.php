@@ -27,6 +27,7 @@
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>Image</th>
+                                        <th>Position</th>
                                         <th style="width: 100px">
                                             <span class="addCategory pointer"><i class="fa fa-plus"></i> THÊM</span>
                                         </th>
@@ -35,7 +36,9 @@
                                         <tr>
                                             <td>{{$key + 1}}.</td>
                                             <td><img src="{{$item->image}}" alt="ảnh banner" style="width:200px; height:100px;"> </td>
+                                            <td>{{$item->position}}</td>
                                             <td>
+                                                <span class="pointer edit" data-item="{{$item}}"><i class="fa fa-edit fa-15x" aria-hidden="true"></i></span>
                                                 <span class="pointer delete" data-id="{{$item->id}}"><i class="fa fa-trash-o fa-15x" aria-hidden="true"></i></span>
                                             </td>
                                         </tr>
@@ -105,5 +108,16 @@
 
             $('#myModal').modal('show');
         })
+
+        $(document).on('click', '.edit', async function () {
+            let item = $(this).data('item');
+            let form = $('#myForm');
+            form.attr('action', '/admin/banners/' + item.id);
+            $('#myModal #myModalLabel').html('Cập nhật').change();
+            form.append('<input name="_method" type="hidden" value="PUT" class="_method" />');
+            $('.position').val(item.position);
+            $('#myModal').modal({show: true})
+        });
+
     </script>
 @endsection
