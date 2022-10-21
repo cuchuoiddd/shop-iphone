@@ -38,7 +38,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
+        $data = $request->all();
+        if(!$request->parent_id){
+            $data['parent_id'] = 0;
+        }
+        if(!$request->parent_id){
+            $data['position'] = 0;
+        }
+        Category::create($data);
         return back()->with(['type' => 'alert-success', 'message' => 'Thêm mới thành công']);
     }
 

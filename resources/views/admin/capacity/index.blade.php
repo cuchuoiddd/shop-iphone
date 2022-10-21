@@ -57,14 +57,14 @@
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Medium model</h4>
+                            <h4 class="modal-title" id="myModalLabel">Dung lượng</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label required">Dung lượng</label>
                                 <div class="col-sm-9 controls">
-                                    <input class="form-control" name="capacity" type="text" required data-validation-required-message="Dung lượng không được bỏ trống">
+                                    <input class="form-control" name="capacity" type="text" required data-validation-required-message="Dung lượng không được bỏ trống" placeholder="ví dụ: 500GB">
                                 </div>
                             </div>
                         </div>

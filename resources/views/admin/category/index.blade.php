@@ -39,7 +39,9 @@
             form.append('<input name="_method" type="hidden" value="PUT" class="_method" />');
 
             $('.name').val(item.name);
-            $('.parent_id').val(item.parent_id).change();
+            if(item.parent_id){
+                $('.parent_id').val(item.parent_id).change();
+            }
             $('.position').val(item.position);
             $('#myModal').modal({show: true})
         });

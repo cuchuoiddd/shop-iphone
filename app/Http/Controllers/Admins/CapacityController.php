@@ -16,7 +16,7 @@ class CapacityController extends Controller
      */
     public function index()
     {
-        $capacities = Capacity::all();
+        $capacities = Capacity::orderBy('position')->get();
         return view('admin.capacity.index', compact('capacities'));
     }
 

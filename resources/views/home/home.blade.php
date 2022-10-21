@@ -6,16 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
-    {{--<link rel="stylesheet" href="https://owlcarousel2.github.io/OwlCarousel2/assets/css/docs.theme.min.css">--}}
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-    <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
+    <link rel="stylesheet" href="{{asset('assets/home/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/home/owl.carousel.min.css')}}">
+    <link rel="stylesheet"
+          href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
+    <script src="{{asset('assets/vendor_components/jquery/dist/jquery.min.js')}}"></script>
+
+    <script src="{{asset('assets/home/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/home/owl.carousel.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
@@ -52,11 +50,11 @@
                 <div class="info">
                     <div class="phone">
                         <img src="{{url('images/demo/phone.png')}}" alt="">
-                        <span class="text-white fz-13">050-3196-8661</span>
+                        <span class="text-white fz-13">{{$setting->phone}}</span>
                     </div>
                     <div class="address d-flex align-items-start">
                         <img src="{{url('images/demo/address.png')}}" alt="">
-                        <span class="text-white fz-13">116-0014東京都荒川区東日暮 6-46-11 フアーストクビル201</span>
+                        <span class="text-white fz-13">{{$setting->address}}</span>
                     </div>
                 </div>
             </div>
@@ -67,7 +65,7 @@
             <div class="col-1"></div>
             <div class="col-4"><img src="{{url($setting->logo)}}" alt=""></div>
             <div class="col-2 d-flex align-items-center">
-                <img class="me-2" src="{{url('/images/demo/phone.png')}}" alt="" />
+                <img class="me-2" src="{{url('/images/demo/phone.png')}}" alt=""/>
                 <span class="text-white fz-16">{{$setting->phone}}</span>
 
             </div>
@@ -81,20 +79,19 @@
     <div class="banner-slide-moblie position-relative d-none">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{url('/images/demo/Group1.png')}}" class="d-block w-100" height="150" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{url('/images/demo/Group9.png')}}" class="d-block w-100" height="150" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{url('/images/demo/Group1.png')}}" class="d-block w-100" height="150" alt="...">
-                </div>
+                @forelse($banner as $key=> $item)
+                    <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+                        <img src="{{url($item->image)}}" class="d-block w-100" height="150" alt="...">
+                    </div>
+                @empty
+                @endforelse
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
                 <img src="{{url('/images/demo/left_small.png')}}" alt="">
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
                 <img src="{{url('/images/demo/right_small.png')}}" alt="">
             </button>
         </div>
@@ -102,14 +99,10 @@
 
     <div class="agdsg banner-slide d-none d-sm-block">
         <div class="owl-carousel">
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
-            <div><img src="{{url('images/demo/Group1.png')}}" style="width: 1089px;height: 334px" alt=""></div>
+            @forelse($banner as $item)
+                <div><img src="{{url($item->image)}}" style="width: 1089px;height: 334px" alt=""></div>
+            @empty
+            @endforelse
         </div>
     </div>
 
@@ -127,171 +120,21 @@
                         </span>
                     </div>
                     <div class="filter">
-                        {{--<ul class="list-group list-group-horizontal justify-content-center">--}}
-                            {{--<li class="list-group-item fz-14 bold active">すべて</li>--}}
-                            {{--<li class="list-group-item fz-14">--}}
-                                {{--<img src="{{url('/images/demo/l1.png')}}" alt="">--}}
-                            {{--</li>--}}
-                            {{--<li class="list-group-item fz-14 bold">128BG</li>--}}
-                            {{--<li class="list-group-item fz-14 bold">128BG</li>--}}
-                            {{--<li class="list-group-item fz-14 bold">128BG</li>--}}
-                            {{--<li class="list-group-item fz-14 bold">128BG</li>--}}
-                        {{--</ul>--}}
                         <div class="row gx-1 text-center">
-                            <div class="filter-item col active">
+                            <div class="filter-item col pointer fz-14 font-medium active" data-id="">
                                 <span>すべて</span>
                             </div>
-                            <div class="filter-item col fz-14 font-medium">
-                                <span>128BG</span>
-                            </div>
-                            <div class="filter-item col fz-14 font-medium">
-                                <span>128BG</span>
-                            </div>
-                            <div class="filter-item col fz-14 font-medium">
-                                <span>128BG</span>
-                            </div>
-                            <div class="filter-item col fz-14 font-medium">
-                                <span>128BG</span>
-                            </div>
+                            @forelse($capacity as $item)
+                                <div class="filter-item col fz-14 font-medium pointer" data-id="{{$item->id}}">
+                                    <span>{{$item->capacity}}</span>
+                                </div>
+                            @empty
+                            @endforelse
+
                         </div>
                     </div>
-                    <div class="row gy-2 gx-2">
-                        <div class="col-6 col-md-4">
-                            <div class="item">
-                                <div class="image">
-                                    <img src="{{url('/images/demo/ip14.png')}}" width="126" height="126" alt="">
-                                </div>
-                                <div class="name fz-14 font-medium">Iphone 14 Pro Max
-                                    128GB</div>
-                                <div class="dung-luong d-flex">
-                                    <span class="sim-free fz-12">Simfree未開封</span>
-                                    <span class="price fz-12">128GB</span>
-                                </div>
-                                <div class="d-flex new-price">
-                                    <div class="fz-14 text">新品</div>
-                                    <div class="fz-16 font-bold number">169,000円</div>
-                                </div>
-                                <div class="d-flex old-price">
-                                    <div class="fz-14 text">中古</div>
-                                    <div class="fz-16 font-bold number">114,000円</div>
-                                </div>
-                                <div class="color text-center">
-                                    <span class="font-medium" style="color: #4f4f4f">Màu</span>
-                                    <span>Đen</span>
-                                </div>
-                                <div class="color-code">
-                                    <ul class="list-group list-group-horizontal justify-content-center align-items-center">
-                                        <li class="list-group-item d-flex active"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <div class="item">
-                                <div class="image">
-                                    <img src="{{url('/images/demo/ip14.png')}}" width="126" height="126" alt="">
-                                </div>
-                                <div class="name fz-14 font-medium">Iphone 14 Pro Max
-                                    128GB</div>
-                                <div class="dung-luong d-flex">
-                                    <span class="sim-free fz-12">Simfree未開封</span>
-                                    <span class="price fz-12">128GB</span>
-                                </div>
-                                <div class="d-flex new-price">
-                                    <div class="fz-14 text">新品</div>
-                                    <div class="fz-16 font-bold number">169,000円</div>
-                                </div>
-                                <div class="d-flex old-price">
-                                    <div class="fz-14 text">中古</div>
-                                    <div class="fz-16 font-bold number">114,000円</div>
-                                </div>
-                                <div class="color text-center">
-                                    <span class="font-medium" style="color: #4f4f4f">Màu</span>
-                                    <span>Đen</span>
-                                </div>
-                                <div class="color-code">
-                                    <ul class="list-group list-group-horizontal justify-content-center align-items-center">
-                                        <li class="list-group-item d-flex active"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <div class="item">
-                                <div class="image">
-                                    <img src="{{url('/images/demo/ip14.png')}}" width="126" height="126" alt="">
-                                </div>
-                                <div class="name fz-14 font-medium">Iphone 14 Pro Max
-                                    128GB</div>
-                                <div class="dung-luong d-flex">
-                                    <span class="sim-free fz-12">Simfree未開封</span>
-                                    <span class="price fz-12">128GB</span>
-                                </div>
-                                <div class="d-flex new-price">
-                                    <div class="fz-14 text">新品</div>
-                                    <div class="fz-16 font-bold number">169,000円</div>
-                                </div>
-                                <div class="d-flex old-price">
-                                    <div class="fz-14 text">中古</div>
-                                    <div class="fz-16 font-bold number">114,000円</div>
-                                </div>
-                                <div class="color text-center">
-                                    <span class="font-medium" style="color: #4f4f4f">Màu</span>
-                                    <span>Đen</span>
-                                </div>
-                                <div class="color-code">
-                                    <ul class="list-group list-group-horizontal justify-content-center align-items-center">
-                                        <li class="list-group-item d-flex active"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <div class="item">
-                                <div class="image">
-                                    <img src="{{url('/images/demo/ip14.png')}}" width="126" height="126" alt="">
-                                </div>
-                                <div class="name fz-14 font-medium">Iphone 14 Pro Max
-                                    128GB</div>
-                                <div class="dung-luong d-flex">
-                                    <span class="sim-free fz-12">Simfree未開封</span>
-                                    <span class="price fz-12">128GB</span>
-                                </div>
-                                <div class="d-flex new-price">
-                                    <div class="fz-14 text">新品</div>
-                                    <div class="fz-16 font-bold number">169,000円</div>
-                                </div>
-                                <div class="d-flex old-price">
-                                    <div class="fz-14 text">中古</div>
-                                    <div class="fz-16 font-bold number">114,000円</div>
-                                </div>
-                                <div class="color text-center">
-                                    <span class="font-medium" style="color: #4f4f4f">Màu</span>
-                                    <span>Đen</span>
-                                </div>
-                                <div class="color-code">
-                                    <ul class="list-group list-group-horizontal justify-content-center align-items-center">
-                                        <li class="list-group-item d-flex active"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                        <li class="list-group-item d-flex"><button class="color-button" style="background-color: red"></button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row gy-2 gx-2 response">
+                        @include('home.ajax')
                     </div>
                 </div>
 
@@ -339,12 +182,17 @@
             <hr>
             <div class="row" style="padding-bottom: 40px">
                 <p class="">
-                    <span class="text-white">Copyright © 2022</span> <span class="copyright">{{$setting->copyright}}</span> <span class="text-white">All Rights Reserved.</span>
+                    <span class="text-white">Copyright © 2022</span> <span
+                            class="copyright">{{$setting->copyright}}</span> <span class="text-white">All Rights Reserved.</span>
                 </p>
             </div>
         </div>
     </div>
 </div>
+<form action="{{url()->current()}}" id="gridForm">
+    <input type="hidden" class="capacity_id" name="capacity_id">
+    <input type="hidden" class="category_id" name="category_id">
+</form>
 </body>
 <script src="{{asset('js/script.js')}}"></script>
 </html>

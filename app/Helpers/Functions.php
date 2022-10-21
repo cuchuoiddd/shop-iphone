@@ -297,4 +297,31 @@ class Functions
 
         return $total_star - $total_star_used;
     }
+    /**
+     * @param $arrs
+     * @param int $parent
+     * @return array
+     */
+    public static function buildMenu($arrs, $parent = 0)
+    {
+        $rs = [];
+        $rs_child = [];
+        foreach ($arrs as $item) {
+            if ($item->parent_id === $parent) {
+                array_push($rs, $item);
+            } else {
+                array_push($rs_child, $item);
+            }
+        }
+        if (count($rs_child)) {
+            foreach ($rs as $item) {
+                $child = self::buildMenu($rs_child, $item->id);
+                if (count($child)) {
+                    $item->children = $child;
+                }
+            }
+        }
+        return $rs;
+    }
+
 }

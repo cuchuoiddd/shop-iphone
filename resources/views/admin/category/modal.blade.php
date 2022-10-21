@@ -29,7 +29,7 @@
                                 <select name="parent_id" id="" class="parent_id select2 form-control" data-placeholder="Chọn danh mục cha">
                                     <option></option>
                                     @forelse($categories as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                        <option value="{{$item->id}}">{{$item->name}} (parent: {{$item->parent_id}})</option>
                                         @empty
                                     @endforelse
                                 </select>

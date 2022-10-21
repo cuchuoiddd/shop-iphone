@@ -34,7 +34,7 @@
                                     @forelse($banners as $key => $item)
                                         <tr>
                                             <td>{{$key + 1}}.</td>
-                                            <td><img src="{{$item->image}}" alt="ảnh banner" style="width:50px; height:50px;"> </td>
+                                            <td><img src="{{$item->image}}" alt="ảnh banner" style="width:200px; height:100px;"> </td>
                                             <td>
                                                 <span class="pointer delete" data-id="{{$item->id}}"><i class="fa fa-trash-o fa-15x" aria-hidden="true"></i></span>
                                             </td>
