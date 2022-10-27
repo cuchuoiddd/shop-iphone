@@ -15,6 +15,8 @@
     <meta property=’og:url’ content='{{url()->current()}}'/>
     <meta property='og:image:width' content='1200' />
     <meta property='og:image:height' content='627' />
+    <meta name="robots" content='noodp,index,follow' />
+    <meta http-equiv="content-language" content="jp" />
 
     <link rel="stylesheet" href="{{asset('assets/home/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/home/owl.carousel.min.css')}}">
