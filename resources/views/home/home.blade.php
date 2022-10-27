@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$setting->title ?: 'Gold Group' }}</title>
     <link rel="shortcut icon" type="image/ico" href="{{$setting->logo}}">
+    <link rel="icon" href="{{$setting->logo}}" type="image/x-icon"/>
 
     <link rel="stylesheet" href="{{asset('assets/home/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/home/owl.carousel.min.css')}}">
