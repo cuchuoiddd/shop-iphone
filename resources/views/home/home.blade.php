@@ -10,7 +10,7 @@
     <link rel="icon" href="{{$setting->logo}}" type="image/x-icon"/>
     <meta property=’og:title’ content='{{$setting->title ?: 'Gold Group' }}'/>
     <meta property=’og:image’ content='{{$setting->logo}}'/>
-
+    <meta property="og:image:secure_url" content="{{$setting->logo}}" />
     <meta property=’og:description’ content='{{$setting->title ?: 'Gold Group' }}'/>
     <meta property=’og:url’ content='{{url()->current()}}'/>
     <meta property='og:image:width' content='1200' />
