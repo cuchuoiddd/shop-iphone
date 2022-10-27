@@ -76,7 +76,7 @@
     <div class="header d-none d-sm-block">
         <div class="row align-items-center" style="height: 100%;">
             <div class="col-1"></div>
-            <div class="col-4"><img src="{{url($setting->logo)}}" alt=""></div>
+            <div class="col-4"><img src="{{url($setting->logo)}}" alt="" width="114" height="114"></div>
             <div class="col-2 d-flex align-items-center">
                 <img class="me-2" src="{{url('/images/demo/phone.png')}}" alt=""/>
                 <span class="text-white fz-16">{{$setting->phone}}</span>
