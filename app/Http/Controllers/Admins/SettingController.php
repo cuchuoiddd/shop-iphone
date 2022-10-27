@@ -103,7 +103,7 @@ class SettingController extends Controller
             Functions::unlinkUpload($setting->logo);
         }
 
-        $setting->update($request->all());
+        $setting->update($data);
         return back()->with(['type' => 'alert-success', 'message' => 'Cập nhật thành công !']);
     }
 
