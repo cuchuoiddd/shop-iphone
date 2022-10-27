@@ -6,6 +6,8 @@ use App\Helpers\Functions;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
@@ -114,5 +116,19 @@ class SettingController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function changePassword(){
+        $user = Auth::user();
+        return view('admin.setting.profile',compact('user'));
+    }
+    public function updatePassword(Request $request){
+        $user = Auth::user();
+        if (Hash::check($request->old_password, $user->password)) {
+            $password = bcrypt($request->new_password);
+            $user->update(['password'=>$password]);
+        } else {
+            return back()->with(['type' => 'alert-danger', 'message' => 'Mật khẩu hiện tại không đúng']);
+        }
+        return back()->with(['type' => 'alert-success', 'message' => 'Đổi mk thành công']);
     }
 }

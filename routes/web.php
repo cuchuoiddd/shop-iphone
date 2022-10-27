@@ -34,6 +34,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('banners', 'BannerController');
         Route::resource('capacities', 'CapacityController');
         Route::resource('colors', 'ColorController');
+
+        Route::get('change-password','SettingController@changePassword');
+        Route::put('update-password','SettingController@updatePassword');
     });
+
+
 
 });

@@ -7,6 +7,9 @@ $(document).ready(function(){
         margin:0,
         autoWidth:true,
         nav:true,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
         responsive:{
             600:{
                 items:2

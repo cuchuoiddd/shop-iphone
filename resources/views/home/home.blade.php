@@ -5,11 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{{$setting->title ?: 'Gold Group' }}</title>
+    <link rel="shortcut icon" type="image/ico" href="{{$setting->logo}}">
+
     <link rel="stylesheet" href="{{asset('assets/home/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/home/owl.carousel.min.css')}}">
     <link rel="stylesheet"
           href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
+
     <script src="{{asset('assets/vendor_components/jquery/dist/jquery.min.js')}}"></script>
 
     <script src="{{asset('assets/home/bootstrap.bundle.min.js')}}"></script>

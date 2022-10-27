@@ -338,6 +338,9 @@
                                 {{--<div class="col-12 text-left">--}}
                                 {{--<a href="#"><i class="ti-settings"></i> Account Setting</a>--}}
                                 {{--</div>--}}
+                                <div class="col-12 text-left">
+                                    <a href="{{url('/admin/change-password')}}"><i class="ion ion-settings"></i> Đổi mật khẩu</a>
+                                </div>
                                 <div role="separator" class="divider col-12"></div>
                                 <div class="col-12 text-left">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();

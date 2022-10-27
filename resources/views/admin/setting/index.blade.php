@@ -26,6 +26,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Title Web</label>
+                                <div class="col-sm-10 controls">
+                                    <input class="form-control title" name="title" type="text" value="{{$settings ? $settings->title : ''}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Header Title</label>
                                 <div class="col-sm-10 controls">
                                     <input class="form-control header_title" name="header_title" type="text" value="{{$settings ? $settings->header_title : ''}}">
