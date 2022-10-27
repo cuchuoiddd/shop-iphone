@@ -6,16 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{$setting->title ?: 'Gold Group' }}</title>
-    <link rel="shortcut icon" type="image/ico" href="{{$setting->logo}}">
-    <link rel="icon" href="{{$setting->logo}}" type="image/x-icon"/>
-    <meta property=’og:title’ content='{{$setting->title ?: 'Gold Group' }}'/>
-    <meta property=’og:image’ content='{{$setting->logo}}'/>
-    <meta property="og:image:secure_url" content="{{$setting->logo}}" />
-    <meta property=’og:description’ content='{{$setting->title ?: 'Gold Group' }}'/>
-    <meta property=’og:url’ content='{{url()->current()}}'/>
-    <meta property='og:image:width' content='1200' />
-    <meta property='og:image:height' content='627' />
-    <meta name="robots" content='noodp,index,follow' />
+    <link rel="shortcut icon" type="image/ico" href="{{asset($setting->logo)}}">
+    <link rel="icon" href="{{asset($setting->logo)}}" type="image/x-icon"/>
+    <meta property="og:title" content="{{$setting->title ?: 'Gold Group' }}"/>
+    <meta property="og:image" content="{{asset($setting->logo)}}"/>
+    <meta property="og:image:secure_url" content="{{asset($setting->logo)}}" />
+    <meta property="og:description" content="{{$setting->title ?: 'Gold Group' }}"/>
+    <meta property="og:url" content="{{url()->current()}}"/>
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="627" />
+    <meta name="robots" content="noodp,index,follow" />
     <meta http-equiv="content-language" content="jp" />
 
     <link rel="stylesheet" href="{{asset('assets/home/bootstrap.min.css')}}">
