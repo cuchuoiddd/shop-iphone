@@ -8,6 +8,13 @@
     <title>{{$setting->title ?: 'Gold Group' }}</title>
     <link rel="shortcut icon" type="image/ico" href="{{$setting->logo}}">
     <link rel="icon" href="{{$setting->logo}}" type="image/x-icon"/>
+    <meta property=’og:title’ content='{{$setting->title ?: 'Gold Group' }}'/>
+    <meta property=’og:image’ content='{{$setting->logo}}'/>
+
+    <meta property=’og:description’ content='{{$setting->title ?: 'Gold Group' }}'/>
+    <meta property=’og:url’ content='{{url()->current()}}'/>
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='627' />
 
     <link rel="stylesheet" href="{{asset('assets/home/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/home/owl.carousel.min.css')}}">
