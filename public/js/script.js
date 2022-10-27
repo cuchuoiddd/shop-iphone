@@ -30,15 +30,22 @@ $(document).ready(function(){
     })
 
     $(document).on('click','.header-mobile .parent',function () {
-        $('.content .parent').removeClass('active').addClass('d-flex align-items-center');
+        $('.header-mobile .parent').removeClass('active').addClass('d-flex align-items-center');
         $(this).addClass('active');
-        $('.content .parent .list-group').hide();
+        $('.header-mobile .parent .list-group').hide();
         $(this).removeClass('d-flex align-items-center').find('.list-group').show();
 
-        $('.content .parent .top').hide();
-        $('.content .parent .right').show();
+        $('.header-mobile .parent .top').hide();
+        $('.header-mobile .parent .right').show();
         $(this).find('.top').show();
         $(this).find('.right').hide();
+    })
+
+    $(document).on('click','.parent.active',function () {
+        let el = $(this);
+        el.removeClass('active').addClass('d-flex align-items-center').find('.list-group').hide();
+        el.find('.top').hide();
+        el.find('.right').show();
     })
 
     $(document).on('click','.color-code .color-button',function () {
