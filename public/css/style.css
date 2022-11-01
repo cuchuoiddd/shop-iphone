@@ -147,6 +147,7 @@ body{
     padding: 3px 8px;
     gap: 8px;
     font-weight: 600;
+    word-break: keep-all;
 }
 .content .item .dung-luong .price{
     border: 1px solid #F7F7F7;
