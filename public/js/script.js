@@ -51,8 +51,8 @@ $(document).ready(function(){
     $(document).on('click','.color-code .color-button',function () {
         let el = $(this);
         let item = el.data('item');
-        el.closest('.item').find('.new-price .number').text(item.new_price);
-        el.closest('.item').find('.old-price .number').text(item.old_price);
+        el.closest('.item').find('.new-price .number').text(formatNumber(item.new_price));
+        el.closest('.item').find('.old-price .number').text(formatNumber(item.old_price));
 
         el.closest('ul').find('.list-group-item').removeClass('active');
         el.parent().addClass('active');
@@ -78,6 +78,11 @@ $(document).ready(function(){
         $('#gridForm .category_id').val(category);
         submitForm();
     })
+
+    function formatNumber(n) {
+        // format number 1000000 to 1,234,567
+        return n.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
 
     //form
     function submitForm(){
