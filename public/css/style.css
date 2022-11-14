@@ -416,6 +416,12 @@ body{
 
     /*------------------------------End Banner---------------------------------*/
 
+    .content .item .color-code ul{
+        padding-bottom: 10px;
+    }
+    .content .item .name{
+        min-height: 42px;
+    }
 
 
 
